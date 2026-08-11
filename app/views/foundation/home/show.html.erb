@@ -1,140 +1,177 @@
-<% identity = Rails.configuration.x.foundation %>
-<% title identity[:default_page_title] %>
+<% title "Beacon — Ship features people actually use" %>
+<% description "Beacon turns feature usage into a roadmap: capture events, see what matters, and ship with confidence." %>
 
-<section class="md-hero" aria-labelledby="hero-title">
-  <div class="md-hero__inner">
-    <div>
-      <p class="md-section__eyebrow"><%= identity[:application_name] %></p>
-      <h1 id="hero-title">Accounts, workspaces, and billing — ready to extend.</h1>
-      <p><%= identity[:default_page_description] %> Authentication, organizations, plans, and a Material Design 3 shell ship as the core. Optional modules are present only when this build includes them.</p>
-      <div class="md-actions">
-        <% if user_signed_in? %>
-          <%= link_to "Open your workspace", organizations.organizations_path, class: "md-button md-button--filled" %>
-          <%= link_to "Manage billing", billing_path, class: "md-button md-button--outlined" %>
-        <% else %>
-          <%= link_to "Create an account", new_user_registration_path, class: "md-button md-button--filled" %>
-          <%= link_to "View plans", pricing_path, class: "md-button md-button--outlined" %>
+<main id="main-content">
+  <!-- Hero -->
+  <section class="md-hero" aria-labelledby="hero-title">
+    <div class="md-hero__inner">
+      <div>
+        <p class="md-section__eyebrow">Beacon</p>
+        <h1 id="hero-title" class="md-hero__title">Ship features people actually use.</h1>
+        <p class="md-hero__lede">Beacon plugs into your product and turns raw usage into a roadmap. See which features earn their keep, which ones are dead weight, and what your users reach for next — without another dashboard to babysit.</p>
+        <div class="md-actions">
+          <%= link_to "Get early access", "#signup", class: "md-button md-button--filled" %>
+          <%= link_to "See how it works", "#features", class: "md-button md-button--outlined" %>
+        </div>
+        <p class="md-caption">Free during the beta. No credit card.</p>
+      </div>
+      <div class="md-hero__art" aria-hidden="true"><div class="md-hero__orb"></div></div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="md-section" id="features" aria-labelledby="features-title">
+    <div class="md-section__inner">
+      <p class="md-section__eyebrow">Features</p>
+      <h2 id="features-title" class="md-section__heading">Everything you need to know what matters.</h2>
+      <div class="md-grid">
+        <article class="md-card md-card--filled md-feature">
+          <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:insights, size: 32) %></span>
+          <div>
+            <h3>Event capture</h3>
+            <p>Drop a single SDK line into your app. Beacon records feature usage, button clicks, and flows — no schema wrangling, no event taxonomy meetings.</p>
+          </div>
+        </article>
+        <article class="md-card md-card--filled md-feature">
+          <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:query_stats, size: 32) %></span>
+          <div>
+            <h3>Usage heatmaps</h3>
+            <p>See which screens and actions your users actually touch. Spot the feature you built that nobody opens, before it becomes a liability.</p>
+          </div>
+        </article>
+        <article class="md-card md-card--filled md-feature">
+          <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:route, size: 32) %></span>
+          <div>
+            <h3>Adoption funnels</h3>
+            <p>From first visit to power user. Beacon shows where people drop off, so you can fix the handoff instead of guessing at it.</p>
+          </div>
+        </article>
+        <article class="md-card md-card--filled md-feature">
+          <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:bolt, size: 32) %></span>
+          <div>
+            <h3>No dashboards to babysit</h3>
+            <p>One page, updated daily, in plain English. Ask "what changed?" and get an answer, not a query language.</p>
+          </div>
+        </article>
+        <article class="md-card md-card--filled md-feature">
+          <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:group, size: 32) %></span>
+          <div>
+            <h3>Privacy-first by design</h3>
+            <p>No cross-site tracking, no adtech. Event data belongs to you, is aggregated on your terms, and can be exported or deleted on request.</p>
+          </div>
+        </article>
+        <article class="md-card md-card--filled md-feature">
+          <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:extension, size: 32) %></span>
+          <div>
+            <h3>Plays nice with your stack</h3>
+            <p>SDKs for Rails, Node, and React, plus a webhook feed that pushes into Slack, Linear, or whatever you already run.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="md-section" id="pricing" aria-labelledby="pricing-title">
+    <div class="md-section__inner">
+      <p class="md-section__eyebrow">Pricing</p>
+      <h2 id="pricing-title" class="md-section__heading">Simple pricing that scales with you.</h2>
+      <div class="md-grid md-grid--3">
+        <article class="md-card md-card--filled">
+          <h3>Starter</h3>
+          <p class="md-price">$0</p>
+          <p>For side projects finding their feet.</p>
+          <ul class="md-list">
+            <li>Up to 10k events / month</li>
+            <li>1 product</li>
+            <li>7-day retention</li>
+            <li>Community support</li>
+          </ul>
+          <%= link_to "Start free", "#signup", class: "md-button md-button--outlined" %>
+        </article>
+        <article class="md-card md-card--filled md-card--featured">
+          <h3>Pro</h3>
+          <p class="md-price">$49<span>/mo</span></p>
+          <p>For teams shipping every week.</p>
+          <ul class="md-list">
+            <li>1M events / month</li>
+            <li>Unlimited products</li>
+            <li>12-month retention</li>
+            <li>Funnels &amp; heatmaps</li>
+            <li>Priority support</li>
+          </ul>
+          <%= link_to "Get early access", "#signup", class: "md-button md-button--filled" %>
+        </article>
+        <article class="md-card md-card--filled">
+          <h3>Scale</h3>
+          <p class="md-price">Custom</p>
+          <p>For orgs with serious volume.</p>
+          <ul class="md-list">
+            <li>Unlimited events</li>
+            <li>SSO &amp; audit logs</li>
+            <li>Data residency</li>
+            <li>Dedicated support</li>
+          </ul>
+          <%= link_to "Talk to us", "#signup", class: "md-button md-button--outlined" %>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="md-section" id="faq" aria-labelledby="faq-title">
+    <div class="md-section__inner">
+      <p class="md-section__eyebrow">FAQ</p>
+      <h2 id="faq-title" class="md-section__heading">Questions, answered.</h2>
+      <div class="md-faq">
+        <details class="md-faq__item">
+          <summary>How is Beacon different from an analytics suite?</summary>
+          <p>Analytics tools answer "how many people came". Beacon answers "what did they actually do with what I built". It's focused on feature-level adoption and the decisions that come out of it, not vanity traffic numbers.</p>
+        </details>
+        <details class="md-faq__item">
+          <summary>Do I need to instrument everything?</summary>
+          <p>No. Drop in the SDK, and Beacon starts tracking core interactions automatically. You can add named events for the flows that matter most — usually fewer than a dozen.</p>
+        </details>
+        <details class="md-faq__item">
+          <summary>What happens to my data?</summary>
+          <p>Your event data is yours. It's stored encrypted, never sold, never shared with ad networks. You can export a full copy or delete it at any time.</p>
+        </details>
+        <details class="md-faq__item">
+          <summary>When does the beta start?</summary>
+          <p>Beta access rolls out over the next few weeks, in the order people sign up. Drop your email below and you'll get an invite and a launch note when it's live.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup -->
+  <section class="md-section" id="signup" aria-labelledby="signup-title">
+    <div class="md-section__inner">
+      <div class="md-card md-card--filled md-signup">
+        <p class="md-section__eyebrow">Early access</p>
+        <h2 id="signup-title" class="md-section__heading">Be first in line.</h2>
+        <p>Join the list for beta access, launch notes, and honest updates — no spam, unsubscribe anytime.</p>
+
+        <% if notice.present? %>
+          <p class="md-callout md-callout--success" role="status"><%= notice %></p>
+        <% elsif alert.present? %>
+          <p class="md-callout md-callout--error" role="alert"><%= alert %></p>
+        <% end %>
+
+        <%= form_with model: @lead, url: leads_path, local: true, class: "md-form" do |f| %>
+          <div class="md-field">
+            <%= f.label :name, "Name (optional)" %>
+            <%= f.text_field :name, autocomplete: "name", placeholder: "Ada Lovelace" %>
+          </div>
+          <div class="md-field">
+            <%= f.label :email, "Email" %>
+            <%= f.email_field :email, required: true, autocomplete: "email", placeholder: "ada@example.com" %>
+          </div>
+          <div class="md-field">
+            <%= f.submit "Join the list", class: "md-button md-button--filled" %>
+          </div>
         <% end %>
       </div>
     </div>
-    <div class="md-hero__art" aria-hidden="true"><div class="md-hero__orb"></div></div>
-  </div>
-</section>
-
-<section class="md-section" aria-labelledby="capabilities-title">
-  <div class="md-section__inner">
-    <p class="md-section__eyebrow">In this build</p>
-    <h2 id="capabilities-title" class="md-section__heading">What ships with every application on this foundation.</h2>
-    <div class="md-grid">
-      <article class="md-card md-card--filled md-feature" data-capability="accounts">
-        <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:person, size: 32) %></span>
-        <div>
-          <h3>Accounts and sign-in</h3>
-          <p>Email confirmation, lockout, OAuth linking without auto-merge, and step-up reauthentication before sensitive changes. Review and revoke your own devices from settings.</p>
-        </div>
-      </article>
-      <article class="md-card md-card--filled md-feature" data-capability="organizations">
-        <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:workspaces, size: 32) %></span>
-        <div>
-          <h3>Organizations and roles</h3>
-          <p>Personal and shared workspaces with owner, admin, and member roles. Invitations use signed, expiring tokens; ownership transfer and leaving stay last-owner safe.</p>
-        </div>
-      </article>
-      <article class="md-card md-card--filled md-feature" data-capability="billing">
-        <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:payments, size: 32) %></span>
-        <div>
-          <h3>Plans and billing</h3>
-          <p>Free, Pro, and Enterprise example tiers with Stripe Checkout, a customer portal, and manual plan assignment that takes precedence when operators need it.</p>
-        </div>
-      </article>
-      <article class="md-card md-card--filled md-feature" data-capability="design">
-        <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:light_mode, size: 32) %></span>
-        <div>
-          <h3>Material Design 3</h3>
-          <p>Light and dark tokens from one brand seed, adaptive navigation, and a local Material Symbols subset — no icon CDN and no Node build in production.</p>
-        </div>
-      </article>
-      <article class="md-card md-card--filled md-feature" data-capability="security">
-        <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:task_alt, size: 32) %></span>
-        <div>
-          <h3>Hardened defaults</h3>
-          <p>Host-header protection from the configured domain, branded transactional mail with inlined styles, confirmation resend that does not leak addresses, and health probes for database, queue, storage, and host headroom.</p>
-        </div>
-      </article>
-      <article class="md-card md-card--filled md-feature" data-capability="native">
-        <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:open_in_new, size: 32) %></span>
-        <div>
-          <h3>Native shell contract</h3>
-          <p>Versioned path configuration, deep-link association documents, and native entry and auth handoff for a Hotwire Native shell — ordinary browsers never receive those routes.</p>
-        </div>
-      </article>
-      <%# foundation:module storefront %>
-      <% if Foundation.module_available?("storefront") %>
-        <article class="md-card md-card--filled md-feature" data-capability="storefront" data-module="storefront">
-          <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:home, size: 32) %></span>
-          <div>
-            <h3>Guest-first storefront</h3>
-            <p>Catalog, cart, and checkout without an account. Amounts are priced server-side; fulfillment runs only through a verified Stripe webhook. Digital goods only.</p>
-          </div>
-        </article>
-      <% end %>
-      <%# /foundation:module storefront %>
-      <%# foundation:module crm %>
-      <% if Foundation.module_available?("crm") %>
-        <article class="md-card md-card--filled md-feature" data-capability="crm" data-module="crm">
-          <span class="md-feature__number" aria-hidden="true"><%= material_symbol(:account_circle, size: 32) %></span>
-          <div>
-            <h3>Organization CRM</h3>
-            <p>Contacts, companies, leads, opportunities, pipelines, tasks, tags, and a per-record activity timeline — scoped to the current organization on every query.</p>
-          </div>
-        </article>
-      <% end %>
-      <%# /foundation:module crm %>
-    </div>
-  </div>
-</section>
-
-<section class="md-section md-section--tonal" aria-labelledby="plans-title">
-  <div class="md-section__inner">
-    <p class="md-section__eyebrow">Simple plans</p>
-    <h2 id="plans-title" class="md-section__heading">Start with what fits today.</h2>
-    <div class="md-pricing-grid">
-      <% PricingPlans.plans.each do |plan| %>
-        <% cents = plan.metadata.dig(:prices, :month) %>
-        <article class="md-card <%= plan.highlighted? ? "md-card--elevated" : "md-card--outlined" %> md-price-card">
-          <% if plan.highlighted? %><span class="md-chip selected">Recommended</span><% end %>
-          <h3><%= plan.name %></h3>
-          <p><%= plan.description %></p>
-          <p class="md-price-card__price"><%= cents.zero? ? "Free" : number_to_currency(cents / 100.0, precision: 0) %><%= "/month" unless cents.zero? %></p>
-          <ul><% plan.bullets.first(3).each do |bullet| %><li><%= bullet %></li><% end %></ul>
-          <%= link_to "View #{plan.name}", pricing_path, class: "md-button #{plan.highlighted? ? "md-button--filled" : "md-button--outlined"}" %>
-        </article>
-      <% end %>
-    </div>
-  </div>
-</section>
-
-<section class="md-section" aria-labelledby="faq-title">
-  <div class="md-section__inner">
-    <p class="md-section__eyebrow">Questions, answered</p>
-    <h2 id="faq-title" class="md-section__heading">A straightforward place to begin.</h2>
-    <div class="md-faq">
-      <details>
-        <summary>Can I begin on the free plan?</summary>
-        <p>Yes. Create an account and move to another plan when your organization needs more. Billing changes that touch payment methods require a fresh identity confirmation.</p>
-      </details>
-      <details>
-        <summary>Can teammates share a workspace?</summary>
-        <p>Yes. Organization owners can invite people and choose owner, admin, or member for each person.</p>
-      </details>
-      <details>
-        <summary>Can I change plans later?</summary>
-        <p>Yes. Eligible organizations can compare plans and manage an active subscription from billing, or contact sales when a plan is not self-serve.</p>
-      </details>
-      <details>
-        <summary>How do I see where I am signed in?</summary>
-        <p>Open Devices in settings to list live sessions, mark the current one, and revoke any session you do not recognize.</p>
-      </details>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
