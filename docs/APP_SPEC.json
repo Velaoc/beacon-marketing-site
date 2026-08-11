@@ -1,0 +1,30 @@
+{
+  "name": "Beacon",
+  "purpose": "Marketing landing page for Beacon, a SaaS product: hero, features, pricing tiers, FAQ, and an email lead-capture form that persists leads for the operator.",
+  "actors": [
+    "Visitors",
+    "Operator (admin)"
+  ],
+  "entities": [
+    {
+      "name": "Lead",
+      "relationships": [
+        "captures name (optional) and email from the landing page form",
+        "stored with source page and timestamp"
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "name": "Sign up for updates",
+      "description": "Visitor submits email (+ optional name) on the landing page; the app validates and stores the lead, shows success feedback"
+    },
+    {
+      "name": "Review leads",
+      "description": "Operator views captured leads and their signup time in the admin area"
+    }
+  ],
+  "modules": [],
+  "integrations": [],
+  "seed_demo": "Fully written Beacon landing copy (hero, features, pricing, FAQ); no fake leads seeded — the lead list starts empty so the operator sees real signups."
+}
