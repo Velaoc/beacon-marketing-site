@@ -203,5 +203,12 @@ Rails.application.routes.draw do
     root "foundation/storefront/products#index"
   else # foundation:module storefront
     root "foundation/home#show"
+
+  # Beacon: public lead capture plus operator review. Defined after the
+  # foundation roots so reverse-order matching prefers the marketing page.
+  resources :leads, only: :create
+  scope path: "admin", module: "admin", as: "admin" do
+    resources :leads, only: :index
+  end
   end # foundation:module storefront
 end
