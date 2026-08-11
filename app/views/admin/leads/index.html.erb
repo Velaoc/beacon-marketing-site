@@ -1,0 +1,35 @@
+<% title "Leads — Beacon admin" %>
+
+<main id="main-content">
+  <section class="md-section">
+    <div class="md-section__inner">
+      <p class="md-section__eyebrow">Beacon admin</p>
+      <h1 class="md-section__heading">Captured leads</h1>
+
+      <% if @leads.any? %>
+        <table class="md-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Signed up</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @leads.each do |lead| %>
+              <tr>
+                <td><%= lead.name.presence || "—" %></td>
+                <td><%= mail_to lead.email %></td>
+                <td><%= l lead.created_at, format: :long %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>No leads yet. Share the landing page and they'll show up here.</p>
+      <% end %>
+
+      <%= link_to "Back to landing page", root_path, class: "md-button md-button--outlined" %>
+    </div>
+  </section>
+</main>
